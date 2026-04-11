@@ -1,0 +1,72 @@
+---
+date: 2026-04-10
+tags:
+  - dpgn
+aliases:
+date modified: 2026-04-11
+---
+# Enhanced 990 Brainstorm
+
+- Problem statement
+	- 990 data is useful in some situations, but not as useful as it could be for nonprofits
+	- It's limited to the US, so excludes global entities
+	- It's defined entirely by tax legislation, and is designed solely for that use case
+		- The tax use case incentivizes (demands) organizations fill it out, so it's widely used
+		- It's not aimed at helping the orgs themselves though
+		- It's wide usage means it becomes a de facto foundation for lots of other non-tax related uses
+	- De facto uses include
+		- EINs - proof that an organization actually is a registered legal nonprofit organization
+		- Discoverability - the 990s are a public dataset that can be used to power content on giving platforms etc.
+			- This is complex and has tradeoffs that have caused friction in the sector where fundraising pages have been created without orgs being aware, leading to confusion about who donors are supporting and, in some extreme cases, lawsuits
+		- Transparency - 990 data is a go-to resource for people who want to learn more about the pros and cons of specific organizations. They power a subset of Charity Navigator (CN) data, the Propublica 990 explorer etc.
+		- Research - while not perfect, 990s do provide a data basis that researchers can use to analyze patterns in the US nonprofit space
+		- Enrichment - There are plenty of places where organizations have created their own data that build on the foundations in the 990 to help address other needs
+		- Categorization - NTEE codes are a helpful standard for organizing groups of nonprofits into more easily analyzable categories, but there's always a "square peg in a round hole" problem that emerges when trying to use these kinds of structures to capture the nuances of nonprofit's work. 
+	- Specific problems include
+		- They're not designed for most of the use cases they actually appear in
+		- They're subject to the whims of congress and the IRS, who don't actually care about most of these use cases
+		- They're inconsistent - different organizations fill out different versions, which makes establishing a clear and consistent baseline across orgs very challenging
+		- They're messy - different organizations interpret questions differently, which also makes clear normalization and interpretation hard
+		- They're often lagging. In the best case scenario, publicly available 990 data is a full year behind (since they're tax documents). The means that 990s are a bad way of understanding what's going on with a particular organization right now.
+		- The 990 data is complicated! It's not terribly accessible to regular people interested in learning about organizations (which is why wrappers+platforms like CN have emerged to help drive interpretability). They're also not necessarily straightforward for nonprofits themselves to fill out, especially the more complex versions of the form.
+- Previous attempts to solve these problems
+	- The Philanthropy Data Commons has aspired to create a "common application" that orgs can use to fill out multiple grant applications based on a single entry dataset. While this work has been going on for a long time, little tangible benefit is available to nonprofits today as a result
+	- Various efforts have been made to establish unique identifiers across the universe of nonprofits, (e.g. the BRIDGE project), but these efforts have ultimately failed to establish a sustinable public good, in large part because they've been gated by the participating organizations. They haven't aligned incentives correctly across the actors in the ecosystem to ensure the long-term health of the solution
+- Meta thoughts
+	- Any viable solution to this problem will be Lindy: that is, the longer it's in use, the longer it's likely to stay in use
+	- A solution to this problem is likely to represent a form of "digital bricolage", and combine patterns, inspiration, and ideas from a variety of disparate spaces
+	- IMPORTANT: The goal of this work, despite the title of "enhanced 990" is NOT actually about trying to improve the 990 itself in the "build a better mousetrap" sense. Rather, it's about reimagining how a data ecosystem/public good/interoperable protocol aimed at supporting the nonprofit sector directly could actually work
+- Sources of inspiration
+	- With the rise of agentic coding, patterns have emerged for allowing humans and LLMs to share context in a streamlined way (see [[Everything is Context Brainstorm]]). These patterns have a few important characteristics:
+		- They're just text, and can therefore be read by humans and LLMs equally well
+		- They're patterns that have some very light rigid structure (YAML frontmatter) combined with more flexibility (Markdown). Within the flexible sections, conventions have emerged about what typically makes sense to go where, but these are up to the individual to interpret and customize
+		- Patterns have emerged for how to name ("agents.md") and store these artifacts to make them portable across projects, people, and AI environments
+		- People are incentivized to keep these artifacts up to date, because they make a whole host of downstream tasks faster, easier, and cheaper
+		- These agentic patterns also incentivize better data creation overall - writing a brainstorm doc like this is something one might've done before, but now the barriers to turning it into a variety of useful downstream artifacts is much lower. This makes people (at least me) more likely to write them and make them more complete/thorough when I do.
+	- "Digital Backpacks"
+		- This is an idea that's come up many times over the years, and while the concept of "you control your own data and take with you where you go", I think that's probably useful inspiration, but also branding that doesn't clearly convey what THIS particular idea is focused on beyond the high-level concept
+- Proposed solution component ideas
+	- Core element: An "agents.md"-style pattern for the nonprofit sector to describe key aspects of their data in an interoperable, easy to maintain format that treats the de facto 990 use cases as first class citizens and has an aligned set of incentives in place to ensure the vitatilty of the resulting data ecosytem for the long haul
+		- This pattern is established as a public good. Each org controls/maintain/stores its own record
+			- It might be helpful to create a central entrypoint/hosting mechanism (see below) for organizations who don't want to worry about the details here, but that's not a strict requirement and certainly not meant to become a monetizable data chokepoint (a failure mode of previous similar attempts at this kind of thing)
+		- Should be easy to autogenerate an initial version based on existing 990 data.
+		- Updates can be made much faster than 990s since the structure is looser and less bureaucratic, and LLMs are really good at creating/updating artifacts like this already when they're used in other domains
+	- Some sort of digital signature to validate that "this org is a registered organization" and, perhaps later that "the info contained in this file is correct"
+		- This probably still needs to come from government records initially for legal reasons
+		- As other existing nonprofit ecosystem actors vaildate information about nonprofits for their own use (like Techsoup does before allowing access to software), those platforms coupld (crypographically) sign an organization's file to vouch for some subset of the data it contains. This allows existing networks to incorporate organizations' validated data faster and easier, and lowers barriers to access to those platforms/networks for new organizations could use trust established on one platform to create trust with another.
+		- An extension of this idea could be for platforms to provide not just a binary "signed or not" response, but perhaps a more granular assessment of the distance between an organization's file from government documents
+	- A mechanism for funders, donors, and researchers to discover and use copies of these files out in the wild
+		- This idea is based on robots.txt, a similarly loosely defined text-based file pattern that the internet knows how to parse.
+		- Platforms/researchers can know where to find these files (either hosted by the orgs themselves or in a shared clearing house) and the patterns for parsing them, enabling ongoing access to updated organization metadata
+	- A mechanism for an organization to use its file to auto-populate data in helpful places (like grant applications)
+		- This builds on the PDC aim of "a common application", but without the restrictions encountered in that work related to trying to align slightly different versions of different fields across users
+		- Key element here is an LLM that can handle that translation between the source file and the different versions of places that data might need to go
+		- This might take the form of a browser extension that has access to the organization's file
+- Higher priority unanswered questions
+	- What's the right balance between structured and unstructured data within this pattern? 
+		- We need to validate that an artifact like this is actually parseable and usable in the ways that the value prop ideas described above assume.
+	- What about detailed transaction data? 
+		- This is probably not a great fit for this kind of artifact, but could be something that's referenced in it and stored elsewhere (it extends the pattern but isn't necessarily part of it)
+	- What's the best way to describe this concept in a nutshell?
+		- We don't need to agonize about the naming, but it would be helpful to have a snappy working name for "the file" to help streamline the conversation when we're talking to potential funders and collaborators
+		- I've considered something like "organization.md" or "nonprofit.md", but don't love either of those. I DO think there's value in the "xyz.md" framing as a way of signaling some of the key elements of this concept succinctly.
