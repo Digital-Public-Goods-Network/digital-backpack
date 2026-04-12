@@ -66,6 +66,14 @@ If a field genuinely isn't in the 990 or available source data, omit it
 rather than guessing — frontmatter is meant to be reliable structured data,
 so don't quietly fill gaps here the way you will in prose sections below.
 
+**Website is the one exception to "just omit it."** The 990 doesn't always
+list a website (some filers leave it blank or list "N/A"), but it's valuable
+enough — and easy enough for a human to just supply — that you should ask
+the user for it rather than silently dropping the field. If it's not
+explicitly listed on the filing, stop and ask the user for the org's
+website before finishing the draft, rather than guessing at a plausible-
+looking URL or leaving it out unremarked.
+
 ## Step 3: Draft the narrative and structured sections
 
 Work through each section in this order: Mission, Theory of change, Programs,
