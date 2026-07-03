@@ -15,7 +15,7 @@ work — one where the 990's de facto non-tax uses (discoverability, transparenc
 research, categorization) are treated as first-class citizens with aligned
 incentives, rather than accidental byproducts of a tax compliance form.
 
-## The problem with 990 data
+## Some current challenges with using 990 data
 
 - Not all nonprofits file the same form (990, 990-EZ, 990-N, 990-PF)
 - It's a tax form — programmatic data is a second-class citizen
@@ -94,6 +94,6 @@ One implementation path: a browser extension with access to the org's file.
 
 ## Related docs
 
-- [`SCHEMA.md`](SCHEMA.md) — the `organization.md` schema as it stands today.
+- [`SCHEMA.md`](SCHEMA.md) — the working draft schema `organization.md` 
 - [`DECISIONS.md`](DECISIONS.md) — open design questions, standardization
   challenges found while drafting real examples, and unresolved next steps.
