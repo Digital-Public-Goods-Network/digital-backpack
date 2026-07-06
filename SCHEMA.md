@@ -1,7 +1,7 @@
 # `organization.md` schema
 
 This describes the `organization.md` schema as it stands today. It's a
-working draft, not a spec — see [`DECISIONS.md`](DECISIONS.md) for open
+working draft, not a spec — see [`QUESTIONS.md`](QUESTIONS.md) for open
 questions and unresolved tensions that may still change it.
 
 For the project's motivation and design principles, see [`README.md`](README.md).

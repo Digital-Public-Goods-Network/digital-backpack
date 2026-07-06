@@ -1,9 +1,9 @@
-# Open questions and decisions
+# Open questions and learnings
 
 A running log of unresolved design questions, findings from drafting real
-examples, and next steps for the `organization.md` schema. See
-[`SCHEMA.md`](SCHEMA.md) for the schema as it stands today, and
-[`README.md`](README.md) for the project's motivation and design principles.
+examples, and next steps. There are MANY more important questions to this work than are listed here,
+so this shouldn't be assumed to be a complete list. Instead, it's meant to help begin trying to organize
+some of the challenges we've surfaced so far.
 
 ## Key open design questions
 
@@ -44,8 +44,7 @@ examples, and next steps for the `organization.md` schema. See
 
 ## Standardization challenges identified
 
-Drafting real organizations (GlobalGiving, Shore Country Day School, Open
-Field) surfaced these tensions:
+Drafting backpacks for real organizations based on available data surfaced these tensions:
 
 - **Single-program orgs** make a programs list feel ceremonial
 - **Revenue composition** signals different things for tuition-driven vs.
@@ -60,7 +59,7 @@ Field) surfaced these tensions:
 
 ## Next steps (not yet decided)
 
-- Refine the schema based on early examples
+- Refine the suggested draft schema based on early examples
 - Draft additional examples from different sectors (health, housing, arts) to
   stress-test the schema and surface more issues
 - Design the publication/consumption model (where does the file live, who
