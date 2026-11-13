@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "luggage-tag.schema.json",
+  "title": "Nonprofit Backpack luggage tag (proposal)",
+  "description": "Basic identifying information for a nonprofit backpack.",
+  "type": "object",
+  "required": ["name"],
+  "properties": {
+    "name": {
+      "description": "Organization name. Stored as `title` in OKF files.",
+      "type": "string",
+      "minLength": 1,
+      "examples": ["Riverbend Food Pantry", "Nyando Women's Water Group"]
+    },
+    "country": {
+      "description": "Two-letter country code (ISO 3166-1) where the organization is registered or based.",
+      "type": ["string", "null"],
+      "pattern": "^[A-Z]{2}$",
+      "examples": ["US", "KE", "PL"]
+    },
+    "registration": {
+      "description": "Government registration or tax ID, with its scheme.",
+      "type": ["string", "null"],
+      "minLength": 1,
+      "examples": ["US-EIN 12-3456789", "GB-CHC 1234567", "KRS 0000000000"]
+    },
+    "website": {
+      "description": "Any URL for the organization: website, social media page, or directory listing.",
+      "type": ["string", "null"],
+      "format": "uri",
+      "pattern": "^https?://",
+      "examples": ["https://riverbendpantry.example.org"]
+    },
+    "references": {
+      "description": "Others who can confirm the organization is real, such as a fiscal sponsor or a platform that has verified it.",
+      "type": ["array", "null"],
+      "items": { "$ref": "#/$defs/reference" }
+    }
+  },
+  "$defs": {
+    "reference": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "description": "Name of the reference.",
+          "type": "string",
+          "minLength": 1,
+          "examples": ["TechSoup", "Community Arts Fund"]
+        },
+        "comment": {
+          "description": "Note from the reference, such as a verification status or relationship.",
+          "type": ["string", "null"],
+          "examples": ["ELIGIBLE", "INSUFFICIENT EVIDENCE — no determination reached", "Fiscal sponsor; US-EIN 00-1000099"]
+        },
+        "url": {
+          "description": "Link to the reference's record or contact page.",
+          "type": ["string", "null"],
+          "format": "uri",
+          "pattern": "^https?://"
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "Riverbend Food Pantry",
+      "country": "US",
+      "registration": "US-EIN 12-3456789",
+      "website": "https://riverbendpantry.example.org",
+      "references": [{ "name": "TechSoup", "comment": "ELIGIBLE" }]
+    },
+    {
+      "name": "Nyando Women's Water Group",
+      "country": "KE",
+      "registration": null,
+      "website": null,
+      "references": [
+        { "name": "Kisumu Community Health Network", "comment": "Funds the group's borehole repairs" },
+        { "name": "Chief's office, Ahero location" }
+      ]
+    },
+    {
+      "name": "Eastside Youth Media Lab",
+      "country": "US",
+      "registration": null,
+      "website": "https://eastsideyouthmedialab.example.org",
+      "references": [{ "name": "Community Arts Fund", "comment": "Fiscal sponsor; US-EIN 00-1000099" }]
+    }
+  ]
+}
