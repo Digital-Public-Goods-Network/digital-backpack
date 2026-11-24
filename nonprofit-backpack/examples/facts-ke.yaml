@@ -1,0 +1,11 @@
+name: Maji Safi Initiative
+country: KE
+registration_id: OP.218/051/23-0456/11234
+website: https://majisafi.example.org
+crawl: false
+summary: Maji Safi Initiative builds and maintains protected springs and household
+  rainwater tanks with villages in Nakuru County, Kenya, and trains local water
+  committees to keep them working.
+access:
+  organization: public
+  about: public
