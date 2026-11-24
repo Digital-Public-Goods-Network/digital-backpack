@@ -1,0 +1,8 @@
+# A US organization: the name typed, the rest from the EIN lookup and the website.
+# The EIN below is fictional; `make_examples.py` injects a stubbed lookup so the example is reproducible.
+name: Riverbend Food Pantry
+ein: 12-3456789
+website: https://riverbendpantry.example.org
+access:
+  organization: public
+  about: public
